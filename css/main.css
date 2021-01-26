@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#book_list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  position: relative;
+  width: 80vw;
+  margin: 1em auto;
+}
+
+.book_info {
+  background-color: rgba(84, 72, 255, 0.808);
+  padding: .3em;
+  margin-right: .3em;
+  margin-bottom: .3em;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.book_info img {
+  height: 200px;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=main.css.map */
