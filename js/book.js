@@ -51,7 +51,7 @@ class CreateBooksFromDB extends React.Component {
         this.state = { books : [] }
     }
     componentDidMount() {
-        axios.get("http://localhost:5000/api/book/?author=10").then((response) => {
+        axios.get("http://localhost:5000/api/book/?author=13").then((response) => {
             response.data.results.forEach((book) => {
                 let e = <Book key={book.id} {...book} ></Book>
                 this.setState({
