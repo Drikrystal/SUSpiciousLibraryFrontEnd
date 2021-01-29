@@ -8,21 +8,15 @@ class Book extends React.Component {
 
     componentDidMount()
     {
-        axios.get("http://localhost:5000/api/author/" + this.props.author + "/").then((response) => {
+        API.instance.get(`author/?id=${this.props.author}`).then((response) => {
             this.setState({
                 "author_name" : response.data.name
             })
-        }).catch((error) => {
-            this.setState({
-                "author_name" : "Error"
-            })
-            console.log(error)
         })
-                
     }
     render() {
         return (
-            <div class="book_info">
+            <div className="book_info">
                 <img src= {this.props.book_cover} />
                 <h2>{this.props.name}</h2>
                 <h3>{this.state.author_name} </h3>
@@ -51,7 +45,7 @@ class CreateBooksFromDB extends React.Component {
         this.state = { books : [] }
     }
     componentDidMount() {
-        axios.get("http://localhost:5000/api/book/?author=13").then((response) => {
+        API.instance.get("book").then((response) => {
             response.data.results.forEach((book) => {
                 let e = <Book key={book.id} {...book} ></Book>
                 this.setState({
