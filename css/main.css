@@ -3,7 +3,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-#book_list {
+.search_list {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];

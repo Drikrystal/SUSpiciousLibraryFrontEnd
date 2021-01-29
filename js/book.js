@@ -1,23 +1,3 @@
-// why dis work but doesn't work in code thi
-
-class Book extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="book_info">
-                <img src= {this.props.book_cover} />
-                <h2>{this.props.name}</h2>
-                <h3>{this.props.author.name} </h3>
-                <h4>${this.props.price}</h4>
-                <button type="button">Add to Cart</button>
-            </div>
-        )
-    }
-}
-
 /*            <div class="book_info">
                 <h1>Id : {this.props.id}</h1>
                 <h3>Book Name : {this.props.name}</h3>
@@ -29,6 +9,24 @@ class Book extends React.Component {
                 <h5>Author : {this.state.author_name} </h5>
             </div>
             */
+
+class Book extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="book_info">
+                <img src= {this.props.book_cover} />
+                <h2>{this.props.name}</h2>
+                <h3>{this.props.author.name}</h3>
+                <h4>${this.props.price}</h4>
+                <button type="button">Add to Cart</button>
+            </div>
+        )
+    }
+}
 
 class CreateBooksFromDB extends React.Component {
     constructor(props){
@@ -63,13 +61,15 @@ class CreateBooksFromDB extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="search_container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
-                {
-                this.state.loading 
-                ? <p>Loading Books...</p> 
-                : <> {this.state.filtered_books} </>
-                }
+                <div className="search_list">
+                    {
+                    this.state.loading 
+                    ? <p>Loading Books...</p> 
+                    : <> {this.state.filtered_books} </>
+                    }
+                </div>
             </div>
         )
     }
