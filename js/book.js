@@ -61,13 +61,15 @@ class CreateBooksFromDB extends React.Component {
 
     render(){
         return (
-            <div className="search_list">
+            <div className="search_container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
-                {
-                this.state.loading 
-                ? <p>Loading Books...</p> 
-                : <> {this.state.filtered_books} </>
-                }
+                <div className="search_list">
+                    {
+                    this.state.loading 
+                    ? <p>Loading Books...</p> 
+                    : <> {this.state.filtered_books} </>
+                    }
+                </div>
             </div>
         )
     }
