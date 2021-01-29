@@ -6,21 +6,19 @@ var API = {
     
     login: function(username, password)
     {
-        instance.post("http://localhost:5000/login/", {
+        this.instance.post("http://localhost:5000/login/", {
             "username":username,
             "password":password
         }).then((response) => {
-            instance.defaults.headers.common['Authorization'] ="JWT "+ response.data.token
+            this.instance.defaults.headers.common['Authorization'] ="JWT "+ response.data.token
             localStorage.setItem("token", "JWT "+ response.data.token)
         }).catch((error) => {
-            instance.defaults.headers.common['Authorization'] = null
+            this.instance.defaults.headers.common['Authorization'] = null
         })
     },
     
     get_current_user: function ()
     {
-        instance.get("user").then((response) => {
-            return response.data[0]
-        })
+        return this.instance.get("user")
     }
 }

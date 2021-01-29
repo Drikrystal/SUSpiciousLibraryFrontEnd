@@ -26,10 +26,11 @@ class GetUserButton extends React.Component {
     }
 
     handle_click(){
-        user = API.get_current_user()
-        alert("You are : " + user.username + "\n"
-            + "Your mail : " + user.email + "\n"
-            + "Your user id : " + user.id)
+        API.get_current_user().then((response) => {
+            alert("You are : " + response.data[0].username + "\n"
+            + "Your mail : " + response.data[0].email + "\n"
+            + "Your user id : " + response.data[0].id)
+        })
     }
     render() {
         return (
