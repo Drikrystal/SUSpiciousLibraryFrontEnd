@@ -1,15 +1,3 @@
-/*            <div class="book_info">
-                <h1>Id : {this.props.id}</h1>
-                <h3>Book Name : {this.props.name}</h3>
-                <img src= {this.props.book_cover} />
-                <h4>Description: {this.props.description}</h4>
-                <h5>ISBN : {this.props.ISBN} </h5>
-                <h5>Price : {this.props.price} $</h5>
-                <h5>Page Count : {this.props.pages}</h5>
-                <h5>Author : {this.state.author_name} </h5>
-            </div>
-            */
-
 class Book extends React.Component {
     constructor(props) {
         super(props);
@@ -74,6 +62,3 @@ class CreateBooksFromDB extends React.Component {
         )
     }
 }
-
-const book_list = document.querySelector('#book_list');
-ReactDOM.render(React.createElement(CreateBooksFromDB), book_list);
