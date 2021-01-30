@@ -23,10 +23,10 @@ class App extends React.Component
     render() {
         return (
             <div>
-                <Navbar> </Navbar>
+                <Navbar></Navbar>
                 {
                 this.state.current_route 
-                ? <this.state.current_route></this.state.current_route>
+                ? <this.state.current_route.component {...this.state.current_route.props}/>
                 : <p>Loading...</p>
                 }
             </div>

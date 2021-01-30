@@ -23,9 +23,12 @@ class Router {
     // observer design end
 
     // routes to register to current router class
-    register(route, component)
+    register(route, component, props={})
     {
-        this.routes[route] = component
+        this.routes[route] = {
+            'component' : component,
+            'props' : props
+        }
     }
 
     change_route(route_key) {
