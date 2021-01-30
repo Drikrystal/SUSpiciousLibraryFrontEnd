@@ -8,7 +8,6 @@ class Index extends React.Component{
         return (
             <div>
                 <h1>Welcome!</h1>
-                <button onClick={() => router.change_route('books')}>Go to Books</button>
             </div>
         )
     }

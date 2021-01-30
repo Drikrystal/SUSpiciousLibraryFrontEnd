@@ -23,6 +23,7 @@ class App extends React.Component
     render() {
         return (
             <div>
+                <Navbar> </Navbar>
                 {
                 this.state.current_route 
                 ? <this.state.current_route></this.state.current_route>
