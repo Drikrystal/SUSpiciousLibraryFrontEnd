@@ -9,8 +9,13 @@ class App extends React.Component
 
     componentDidMount() 
     {
-        // when the app is intially loaded, go to the index page
-        router.change_route('index')
+        // when the app is intially loaded, go to the hashed page,
+        // otherwise go to the index
+        if (window.location.hash){
+            router.change_route(window.location.hash.replace("#", ""))
+        } else{
+            router.change_route('index')
+        }
     }
 
     routeListener(route)
@@ -36,3 +41,7 @@ class App extends React.Component
 
 const app = document.querySelector('#app');
 ReactDOM.render(React.createElement(App), app);
+
+window.onhashchange = ((e) => {
+    router.change_route(e.newURL.split("#")[1])
+});

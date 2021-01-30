@@ -1,9 +1,10 @@
 class Router {
     constructor() {
+        // get the location hash and set the url to it
         // observers for route changes
         this.observers = []
         this.routes = {}
-        this.current_route = null 
+        this.current_route = null
     }
 
     // observer design
@@ -30,16 +31,16 @@ class Router {
             'props' : props
         }
     }
-
     change_route(route_key) {
-        if (route_key != this.current_route){
-            if (this.routes[route_key]) {
+        if (this.routes[route_key]){
+            if (this.routes[route_key] != this.current_route) {
                 this.current_route = this.routes[route_key]
-            } else {
-                this.current_route = this.routes[404]
+                window.location.hash = route_key
             }
-            this.notify();
+        } else {
+            this.current_route = this.routes[404]
         }
+        this.notify();
     }
 }
 
