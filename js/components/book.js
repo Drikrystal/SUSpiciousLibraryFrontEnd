@@ -62,3 +62,6 @@ class CreateBooksFromDB extends React.Component {
         )
     }
 }
+
+router.register("book", CreateBooksFromDB)
+

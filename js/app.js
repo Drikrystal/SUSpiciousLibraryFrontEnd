@@ -2,18 +2,32 @@ class App extends React.Component
 {
     constructor(props) {
         super(props);
-        this.state = { routes: routes, current_route : routes.initial_route}
-        setTimeout(() => {
-            this.setState({
-                current_route : routes.books
-            });
-        }, 2000)
+        this.state = { current_route : null }
+        this.routeListener = this.routeListener.bind(this)
+        router.attach(this.routeListener);   
+    }
+
+    componentDidMount() 
+    {
+        // when the app is intially loaded, go to the index page
+        router.change_route('index')
+    }
+
+    routeListener(route)
+    {
+        this.setState({
+            current_route : route
+        })
     }
 
     render() {
         return (
             <div>
-                <this.state.current_route></this.state.current_route>
+                {
+                this.state.current_route 
+                ? <this.state.current_route></this.state.current_route>
+                : <p>Loading...</p>
+                }
             </div>
         )
     }
