@@ -2,18 +2,38 @@ class App extends React.Component
 {
     constructor(props) {
         super(props);
-        this.state = { routes: routes, current_route : routes.initial_route}
-        setTimeout(() => {
-            this.setState({
-                current_route : routes.books
-            });
-        }, 2000)
+        this.state = { current_route : null }
+        this.routeListener = this.routeListener.bind(this)
+        router.attach(this.routeListener);   
+    }
+
+    componentDidMount() 
+    {
+        // when the app is intially loaded, go to the hashed page,
+        // otherwise go to the index
+        if (window.location.hash){
+            router.change_route(window.location.hash.replace("#", ""))
+        } else{
+            router.change_route('index')
+        }
+    }
+
+    routeListener(route)
+    {
+        this.setState({
+            current_route : route
+        })
     }
 
     render() {
         return (
             <div>
-                <this.state.current_route></this.state.current_route>
+                <Navbar></Navbar>
+                {
+                this.state.current_route 
+                ? <this.state.current_route.component {...this.state.current_route.props}/>
+                : <p>Loading...</p>
+                }
             </div>
         )
     }
@@ -21,3 +41,7 @@ class App extends React.Component
 
 const app = document.querySelector('#app');
 ReactDOM.render(React.createElement(App), app);
+
+window.onhashchange = ((e) => {
+    router.change_route(e.newURL.split("#")[1])
+});

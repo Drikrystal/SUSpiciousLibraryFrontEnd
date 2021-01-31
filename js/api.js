@@ -1,7 +1,7 @@
 var API = {
     instance : axios.create({
         baseURL: 'http://localhost:5000/api/',
-        timeout: 1000
+        timeout: 3000
     }),
     
     login: function(username, password)
@@ -19,6 +19,6 @@ var API = {
     
     get_current_user: function ()
     {
-        return this.instance.get("user")
+        return this.instance.get("user").then((response) => response.data[0])
     }
 }
