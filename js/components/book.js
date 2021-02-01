@@ -49,7 +49,7 @@ class CreateBooksFromDB extends React.Component {
 
     render(){
         return (
-            <div className="search_container">
+            <div className="content_container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
                 <div className="search_list">
                     {
