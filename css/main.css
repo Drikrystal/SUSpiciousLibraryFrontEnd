@@ -1,6 +1,83 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 body {
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.top_nav {
+  padding: 1em;
+  background-color: #7262ff;
+  margin-bottom: 2em;
+}
+
+.top_nav .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.top_nav .container .logo {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2em;
+  margin-right: 5em;
+}
+
+.top_nav .container .logo span {
+  color: #00ff73;
+}
+
+.top_nav .container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+}
+
+.top_nav .container nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.top_nav .container nav ul li {
+  vertical-align: middle;
+  padding: .2em 2em;
+}
+
+.top_nav .container nav a {
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.top_nav .container nav a:hover {
+  color: #00ff73;
+}
+
+.content_container {
+  text-align: center;
+}
+
+.content_container input {
+  width: 40vw;
+  height: 2em;
 }
 
 .search_list {
@@ -8,13 +85,12 @@ body {
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  position: relative;
   width: 80vw;
   margin: 1em auto;
 }
 
-.book_info {
-  background-color: rgba(84, 72, 255, 0.808);
+.search_list .book_info {
+  background-color: #7262ff;
   padding: .3em;
   margin-right: .3em;
   margin-bottom: .3em;
@@ -22,7 +98,7 @@ body {
   text-align: center;
 }
 
-.book_info img {
+.search_list .book_info img {
   height: 200px;
   border-radius: 10px;
 }
