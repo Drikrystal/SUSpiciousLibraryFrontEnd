@@ -7,7 +7,8 @@ class NotFoundPage extends React.Component {
         return (
             <div>
                 <h1>Route {this.props.route} is not found</h1>
-            </div>    
+                <button onClick= {() => window.history.back()}>Go Back</button>
+            </div> 
         )
     }
 }

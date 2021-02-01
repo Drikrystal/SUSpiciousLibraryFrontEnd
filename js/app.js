@@ -42,6 +42,7 @@ class App extends React.Component
 const app = document.querySelector('#app');
 ReactDOM.render(React.createElement(App), app);
 
+// listen for the onhashchange event, if the hash changes, change the route
 window.onhashchange = ((e) => {
     router.change_route(e.newURL.split("#")[1])
 });

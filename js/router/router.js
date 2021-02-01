@@ -31,13 +31,23 @@ class Router {
             'props' : props
         }
     }
-    change_route(route_key) {
+
+    change_route(route_key, props={}) {
         if (this.routes[route_key]){
             if (this.routes[route_key] != this.current_route) {
                 this.current_route = this.routes[route_key]
+                if (props){
+                    this.current_route.props = props
+                }
                 window.location.hash = route_key
             }
         } else {
+            this.routes[404] = {
+                'component' : this.routes[404].component,
+                'props' : {
+                    'route' : route_key
+                }
+            } 
             this.current_route = this.routes[404]
         }
         this.notify();
