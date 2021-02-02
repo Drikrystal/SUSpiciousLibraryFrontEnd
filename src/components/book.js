@@ -1,4 +1,7 @@
-class Book extends React.Component {
+import { API } from "../api.js";
+import React from 'react';
+
+export class Book extends React.Component {
     constructor(props) {
         super(props);
         // author returned from the server might be deleted, (i.e. author attribute will be null), 
@@ -23,7 +26,7 @@ class Book extends React.Component {
     }
 }
 
-class CreateBooksFromDB extends React.Component {
+export class CreateBooksFromDB extends React.Component {
     constructor(props){
         super(props)
         this.state = { loading: true, books : [], filtered_books: [] }
@@ -69,6 +72,3 @@ class CreateBooksFromDB extends React.Component {
         )
     }
 }
-
-router.register("book", CreateBooksFromDB)
-

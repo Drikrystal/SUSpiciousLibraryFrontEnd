@@ -1,4 +1,6 @@
-class NotFoundPage extends React.Component {
+import React from 'react';
+
+export class NotFoundPage extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -7,10 +9,8 @@ class NotFoundPage extends React.Component {
         return (
             <div>
                 <h1>Route {this.props.route} is not found</h1>
-                <button onClick= {() => window.history.back()}>Go Back</button>
             </div> 
         )
     }
 }
 
-router.register(404, NotFoundPage)

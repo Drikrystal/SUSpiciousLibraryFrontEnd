@@ -1,4 +1,6 @@
-var API = {
+import axios from 'axios';
+
+export var API = {
     instance : axios.create({
         baseURL: 'http://localhost:5000/api/',
         timeout: 3000
@@ -15,7 +17,7 @@ var API = {
         }).catch((error) => {
             this.instance.defaults.headers.common['Authorization'] = null
         })
-    },
+    }, 
     
     get_current_user: function ()
     {
