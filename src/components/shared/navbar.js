@@ -1,19 +1,17 @@
-class Navbar extends React.Component{
-    constructor(props){
-        super(props);
-    }
+import React from 'react';
+import { Link } from "react-router-dom";
 
+export default class Navbar extends React.Component{
     render()
     {
         return (
             <div className="top_nav">
                 <div className ="container">
-                    <a className="logo" href="#index">Buy<span>Books</span>Here</a>
-
+                    <Link to="/" className="logo">Buy<span>Books</span>Here</Link>
                     <nav>
                         <ul>
-                            <li><a href="#index" onClick={() => router.change_route('index')}>Index</a></li>
-                            <li><a href="#book"  onClick={() => router.change_route('book')}>Books</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/books">Books</Link></li>
                         </ul>
                     </nav>
                 </div>

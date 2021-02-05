@@ -1,8 +1,6 @@
-class Index extends React.Component{
-    constructor(props){
-        super(props);
-    }
+import React from 'react';
 
+export class Home extends React.Component {
     render()
     {
         return (
@@ -12,5 +10,3 @@ class Index extends React.Component{
         )
     }
 }
-
-router.register("index", Index)

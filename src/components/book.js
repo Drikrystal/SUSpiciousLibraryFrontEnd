@@ -1,6 +1,16 @@
-class Book extends React.Component {
+import { API } from "../api.js";
+import React from 'react';
+
+export class Book extends React.Component {
     constructor(props) {
         super(props);
+        // author returned from the server might be deleted, (i.e. author attribute will be null), 
+        // need null check it before setting it
+        if (this.props.author !== null){
+            this.author_name = this.props.author.name
+        } else{
+            this.author_name = "No Author"
+        }
     }
 
     render() {
@@ -8,7 +18,7 @@ class Book extends React.Component {
             <div className="book_info">
                 <img src= {this.props.book_cover} />
                 <h2>{this.props.name}</h2>
-                <h3>{this.props.author.name}</h3>
+                <h3>{this.author_name}</h3>
                 <h4>${this.props.price}</h4>
                 <button type="button">Add to Cart</button>
             </div>
@@ -16,7 +26,7 @@ class Book extends React.Component {
     }
 }
 
-class CreateBooksFromDB extends React.Component {
+export class CreateBooksFromDB extends React.Component {
     constructor(props){
         super(props)
         this.state = { loading: true, books : [], filtered_books: [] }
@@ -62,6 +72,3 @@ class CreateBooksFromDB extends React.Component {
         )
     }
 }
-
-router.register("book", CreateBooksFromDB)
-
