@@ -1,16 +1,11 @@
 import { API } from "../api.js";
 import React from 'react';
+import { Link } from "react-router-dom";
+import "../css/component/book.css"
 
-export class Book extends React.Component {
+class Book extends React.Component {
     constructor(props) {
         super(props);
-        // author returned from the server might be deleted, (i.e. author attribute will be null), 
-        // need null check it before setting it
-        if (this.props.author !== null){
-            this.author_name = this.props.author.name
-        } else{
-            this.author_name = "No Author"
-        }
     }
 
     render() {
@@ -18,15 +13,16 @@ export class Book extends React.Component {
             <div className="book_info">
                 <img src= {this.props.book_cover} />
                 <h2>{this.props.name}</h2>
-                <h3>{this.author_name}</h3>
+                <h3>{this.props.author ? this.props.author.name : "No Author"}</h3>
                 <h4>${this.props.price}</h4>
-                <button type="button">Add to Cart</button>
+                <button type="button">Add to Cart</button> <br />
+                <Link to={`/book/${this.props.id}`}>Detail</Link>
             </div>
         )
     }
 }
 
-export class CreateBooksFromDB extends React.Component {
+export default class CreateBooksFromDB extends React.Component {
     constructor(props){
         super(props)
         this.state = { loading: true, books : [], filtered_books: [] }

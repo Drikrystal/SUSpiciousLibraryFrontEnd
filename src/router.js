@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router } from 'react-router-dom'
-import { CreateBooksFromDB } from './components/book'
-import { Home } from './components/home'
+import CreateBooksFromDB from './components/book'
+import BookDetail from './components/book_detail'
+import Home from './components/home'
 import App from "./App";
 
 function Routes() {
@@ -8,7 +9,8 @@ function Routes() {
     <Router>
       <App></App>
       <Route path="/" exact component={Home}></Route>
-      <Route path="/books" exact component={CreateBooksFromDB}></Route>
+      <Route path="/book" exact component={CreateBooksFromDB}></Route>
+      <Route path="/book/:id" component={ BookDetail }></Route>
     </Router>
   )
 }
