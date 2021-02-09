@@ -24,6 +24,7 @@ a {
         display: flex;
         width: 80vw;
         margin: 0 auto;
+        justify-content: space-between;
 
         .logo {
             text-decoration: none;
@@ -34,6 +35,9 @@ a {
     
             span {
                 color: rgb(0, 255, 115);
+            }
+            &:hover {
+                color: white;
             }
         }
     
@@ -64,6 +68,10 @@ a {
     }
 }
 
+.login-container {
+    display: flex;
+    justify-content: space-between;
+}
 
 input {
     border: none;

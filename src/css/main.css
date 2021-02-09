@@ -26,6 +26,9 @@ a {
   display: flex;
   width: 80vw;
   margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .top_nav .container .logo {
@@ -38,6 +41,10 @@ a {
 
 .top_nav .container .logo span {
   color: #00ff73;
+}
+
+.top_nav .container .logo:hover {
+  color: white;
 }
 
 .top_nav .container nav {
@@ -69,6 +76,15 @@ a {
 
 .top_nav .container nav a:hover {
   color: #00ff73;
+}
+
+.login-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 input {

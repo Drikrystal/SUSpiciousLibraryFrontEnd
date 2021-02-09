@@ -7,8 +7,8 @@ export default class Navbar extends React.Component{
         return (
             <div className="top_nav">
                 <div className ="container">
-                    <Link to="/" className="logo">Buy<span>Books</span>Here</Link>
                     <nav>
+                        <Link to="/" className="logo">Buy<span>Books</span>Here</Link>
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/books">Books</Link></li>
