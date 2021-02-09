@@ -62,8 +62,36 @@ a {
             }
         }
     }
-
 }
+
+
+input {
+    border: none;
+    box-sizing: border-box;
+    appearance: none;
+    padding: .5em;
+    border-radius: 3px;
+    margin-right: .2em;
+    outline: none;
+}
+input:focus {
+    background-color: rgb(212, 255, 212);
+    transition: background-color 0.3s ease;
+}
+button {
+    border: none;
+    background-color: rgb(88, 212, 144);
+    padding: .5em 1em;
+    border-radius: 3px;
+    color: rgb(46, 46, 46);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+button:hover {
+    background-color: rgb(65, 156, 106);
+    transition: background-color 0.3s ease;
+}
+
 
 
 .content_container {
@@ -71,7 +99,12 @@ a {
 
     input {
         width: 40vw;
-        height: 2em;
+        padding: 1em;
+        background-color:rgb(235, 235, 235);
+    }
+    input:focus {
+        background-color: rgb(212, 255, 212);
+        transition: background-color 0.3s ease;
     }
 }
 
@@ -88,10 +121,21 @@ a {
         margin-bottom: .3em;
         border-radius: 5px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        a {
+            color: black;
+        }
 
         img {
             height: 200px;
             border-radius: 10px;
+        }
+        button {
+            margin: auto auto 0 auto;
+            width: 60%;
+            padding: .7em 1em;
         }
     }
 }

@@ -16,11 +16,12 @@ export class Book extends React.Component {
     render() {
         return (
             <div className="book_info">
-                <img src= {this.props.book_cover} />
-                <h2>{this.props.name}</h2>
-                <h3>{this.author_name}</h3>
+                <a href=""><img src= {this.props.book_cover} /></a>
+                <a href=""><h2>{this.props.name}</h2></a>
+                <a href=""><h3>{this.author_name}</h3></a>
                 <h4>${this.props.price}</h4>
                 <button type="button">Add to Cart</button>
+                
             </div>
         )
     }

@@ -12,8 +12,17 @@ export default class Navbar extends React.Component{
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/books">Books</Link></li>
+                            <li><Link to="/authors">Authors</Link></li>
+                            <li><Link to="/publishers">Publishers</Link></li>
                         </ul>
                     </nav>
+                    <div class="login-container">
+                        <form action="none">
+                            <input type="text" placeholder="Username" name="username" />
+                            <input type="password" placeholder="Password" name="psw" />
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
