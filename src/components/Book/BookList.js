@@ -2,24 +2,21 @@ import { API } from "../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
 
-export class Book extends React.Component {
+class Book extends React.Component {
     constructor(props) {
         super(props);
-        // author returned from the server might be deleted, (i.e. author attribute will be null), 
-        // need null check it before setting it
-        if (this.props.author !== null){
-            this.author_name = this.props.author.name
-        } else{
-            this.author_name = "No Author"
-        }
     }
 
     render() {
+        let author_span = <span className="author">Unknown Author</span>
+        if (this.props.author) {
+            author_span = <span className="author"><Link to={"/author/" + this.props.author.id}>{this.props.author.name}</Link></span>
+        }
         return (
             <div className="book_info">
-                <Link to="/bookdetail"><img src= {this.props.book_cover}/></Link>
-                <span className="title"><Link to="/bookdetail">{this.props.name}</Link></span>
-                <span className="author"><Link to="/authordetail">{this.author_name}</Link></span>
+                <Link to={"/book/" + this.props.id}><img src= {this.props.book_cover}/></Link>
+                <span className="title"><Link to={"/book/" + this.props.id}>{this.props.name}</Link></span>
+                { author_span }
                 <span className="price">${this.props.price}</span>
                 <button type="button">Add to Cart</button>
             </div>
@@ -27,7 +24,7 @@ export class Book extends React.Component {
     }
 }
 
-export class CreateBooksFromDB extends React.Component {
+export default class LoadBooks extends React.Component {
     constructor(props){
         super(props)
         this.state = { loading: true, books : [], filtered_books: [] }
