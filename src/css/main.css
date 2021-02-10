@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   margin: 0;
+  height: 100%;
 }
 
 ul {
@@ -15,39 +16,41 @@ a {
 }
 
 .top_nav {
-  padding: 1em;
   background-color: #7262ff;
   margin-bottom: 2em;
+  padding: 0;
 }
 
-.top_nav .container {
+.top_nav .container-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 80vw;
-  margin: 0 auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80vw;
+  margin: 0 auto;
 }
 
-.top_nav .container .logo {
+.top_nav .container-nav .logo {
   text-decoration: none;
   font-weight: bold;
   color: white;
   font-size: 1.2em;
-  margin-right: 5em;
 }
 
-.top_nav .container .logo span {
+.top_nav .container-nav .logo span {
   color: #00ff73;
 }
 
-.top_nav .container .logo:hover {
+.top_nav .container-nav .logo:hover {
   color: white;
 }
 
-.top_nav .container nav {
+.top_nav .container-nav nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,24 +60,24 @@ a {
   padding: 0;
 }
 
-.top_nav .container nav ul {
+.top_nav .container-nav nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.top_nav .container nav ul li {
+.top_nav .container-nav nav ul li {
   vertical-align: middle;
-  padding: .2em 2em;
+  padding: .2em 1.5em;
 }
 
-.top_nav .container nav a {
+.top_nav .container-nav nav a {
   color: white;
   font-weight: bold;
   font-size: 1em;
 }
 
-.top_nav .container nav a:hover {
+.top_nav .container-nav nav a:hover {
   color: #00ff73;
 }
 
@@ -85,6 +88,34 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-size: .8em;
+  color: white;
+  font-size: 1em;
+}
+
+.login-container a {
+  color: white;
+  padding: 1em;
+}
+
+.cart-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.cart-container a {
+  background-color: #58d490;
+  color: white;
+  padding: 1em;
+}
+
+.cart-container a:hover {
+  background-color: #419c6a;
+}
+
+.cart-container span {
+  margin-left: .5em;
 }
 
 input {
@@ -145,13 +176,12 @@ button:hover {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 80vw;
   margin: 1em auto;
+  gap: .3em;
 }
 
 .search_list .book_info {
   background-color: #7262ff;
   padding: .3em;
-  margin-right: .3em;
-  margin-bottom: .3em;
   border-radius: 5px;
   text-align: center;
   display: -webkit-box;
@@ -161,6 +191,11 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.search_list .book_info span {
+  margin: .5em 0;
+  font-weight: bold;
 }
 
 .search_list .book_info a {
@@ -176,5 +211,6 @@ button:hover {
   margin: auto auto 0 auto;
   width: 60%;
   padding: .7em 1em;
+  font-size: .8em;
 }
 /*# sourceMappingURL=main.css.map */
