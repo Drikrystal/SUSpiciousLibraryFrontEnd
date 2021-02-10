@@ -1,17 +1,17 @@
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
-import Home from './components/home'
+import Home from './components/Home'
 
-import LoadBooks from './components/booklist'
-import LoadAuthors from './components/authorlist'
-import LoadPublishers from './components/publisherlist';
+import LoadBooks from './components/Book/BookList'
+import LoadAuthors from './components/Author/AuthorList'
+import LoadPublishers from './components/Publisher/PublisherList';
 
-import BookDetail from './components/bookdetail'
-import AuthorDetail from './components/authordetail'
-import PublisherDetail from './components/publisherdetail';
-import { Login } from './components/login';
+import BookDetail from './components/Book/BookDetail'
+import AuthorDetail from './components/Author/AuthorDetail'
+import PublisherDetail from './components/Publisher/PublisherDetail';
+import { Login } from './components/Login';
 
-import Navbar from "./components/shared/navbar"
+import Navbar from "./components/shared/Navbar"
 
 function App() {
   return (

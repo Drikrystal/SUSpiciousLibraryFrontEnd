@@ -1,14 +1,14 @@
-import { API } from "../api.js";
+import { API } from "../../api.js";
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
-class BookDetail extends React.Component {
+class PublisherDetail extends React.Component {
 
     constructor(props){
         super(props)
-        this.state = { detail : '' }
+        this.state = { detail : '' , error : '' }
     }
-    
+
     componentDidMount()
     {
         API.instance.get(`${this.props.match.url}`).then((response) => {
@@ -16,21 +16,23 @@ class BookDetail extends React.Component {
                 detail : response.data
             })
         }).catch((error) => {
-            console.log("Error loading book", error)
+            this.setState({
+                error : error
+            })
         }) 
     }
 
-    render() {        
+    render() {
+        if (this.state.error) {
+            return <div className="error">Error Loading Publisher</div>
+        }
         return (
             <div className="book_info">
-                <img src= {this.state.detail.book_cover} />
                 <h2>{this.state.detail.name}</h2>
-                <h3>{this.state.detail.author ? this.state.detail.author.name : "No Author"}</h3>
-                <h4>${this.state.detail.price}</h4>
-                <button type="button">Add to Cart</button>
+                <h4>{this.state.detail.description ? this.state.detail.description : ""}</h4>
             </div>
         )
     }
 }
 
-export default withRouter(BookDetail);
+export default withRouter(PublisherDetail);
