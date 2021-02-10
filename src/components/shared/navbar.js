@@ -7,8 +7,8 @@ export default class Navbar extends React.Component{
     render()
     {
         return (
-            <div className="top_nav navbar sticky-top">
-                <div className ="container-nav">
+            <div className="top-nav navbar sticky-top">
+                <div className="container-nav">
                     <Link to="/" className="logo">Buy<span>Books</span>Here</Link>
                     <nav>
                         <ul>
@@ -22,7 +22,7 @@ export default class Navbar extends React.Component{
                         <Link to="/login"><img src= {userIcon} alt="Cart Icon"/> Welcome, <span className="user-name">Login</span></Link>
                     </div>
                     <div className="cart-container">
-                        <Link to="/cart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">0</span></Link>
+                        <Link to="/viewcart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">0</span></Link>
                     </div>
                 </div>
             </div>

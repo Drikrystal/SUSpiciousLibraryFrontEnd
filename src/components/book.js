@@ -16,7 +16,7 @@ export class Book extends React.Component {
 
     render() {
         return (
-            <div className="book_info">
+            <div className="book-info">
                 <Link to="/bookdetail"><img src= {this.props.book_cover}/></Link>
                 <span className="title"><Link to="/bookdetail">{this.props.name}</Link></span>
                 <span className="author"><Link to="/authordetail">{this.author_name}</Link></span>
@@ -60,9 +60,9 @@ export class CreateBooksFromDB extends React.Component {
 
     render(){
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
-                <div className="search_list">
+                <div className="search-list">
                     {
                     this.state.loading 
                     ? <p>Loading Books...</p> 

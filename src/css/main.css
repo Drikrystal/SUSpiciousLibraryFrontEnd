@@ -15,13 +15,13 @@ a {
   text-decoration: none;
 }
 
-.top_nav {
+.top-nav {
   background-color: #7262ff;
   margin-bottom: 2em;
   padding: 0;
 }
 
-.top_nav .container-nav {
+.top-nav .container-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,22 +35,22 @@ a {
   margin: 0 auto;
 }
 
-.top_nav .container-nav .logo {
+.top-nav .container-nav .logo {
   text-decoration: none;
   font-weight: bold;
   color: white;
   font-size: 1.2em;
 }
 
-.top_nav .container-nav .logo span {
+.top-nav .container-nav .logo span {
   color: #00ff73;
 }
 
-.top_nav .container-nav .logo:hover {
+.top-nav .container-nav .logo:hover {
   color: white;
 }
 
-.top_nav .container-nav nav {
+.top-nav .container-nav nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,24 +60,24 @@ a {
   padding: 0;
 }
 
-.top_nav .container-nav nav ul {
+.top-nav .container-nav nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.top_nav .container-nav nav ul li {
+.top-nav .container-nav nav ul li {
   vertical-align: middle;
   padding: .2em 1.5em;
 }
 
-.top_nav .container-nav nav a {
+.top-nav .container-nav nav a {
   color: white;
   font-weight: bold;
   font-size: 1em;
 }
 
-.top_nav .container-nav nav a:hover {
+.top-nav .container-nav nav a:hover {
   color: #00ff73;
 }
 
@@ -153,23 +153,23 @@ button:hover {
   transition: background-color 0.3s ease;
 }
 
-.content_container {
+.content-container {
   text-align: center;
 }
 
-.content_container input {
+.content-container input {
   width: 40vw;
   padding: 1em;
   background-color: #ebebeb;
 }
 
-.content_container input:focus {
+.content-container input:focus {
   background-color: #d4ffd4;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
 
-.search_list {
+.search-list {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
@@ -179,7 +179,7 @@ button:hover {
   gap: .3em;
 }
 
-.search_list .book_info {
+.search-list .book-info {
   background-color: #7262ff;
   padding: .3em;
   border-radius: 5px;
@@ -193,21 +193,21 @@ button:hover {
           flex-direction: column;
 }
 
-.search_list .book_info span {
+.search-list .book-info span {
   margin: .5em 0;
   font-weight: bold;
 }
 
-.search_list .book_info a {
+.search-list .book-info a {
   color: black;
 }
 
-.search_list .book_info img {
+.search-list .book-info img {
   height: 200px;
   border-radius: 10px;
 }
 
-.search_list .book_info button {
+.search-list .book-info button {
   margin: auto auto 0 auto;
   width: 60%;
   padding: .7em 1em;
