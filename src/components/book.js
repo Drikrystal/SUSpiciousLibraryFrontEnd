@@ -1,7 +1,6 @@
 import { API } from "../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
-import "../css/component/book.css"
 
 class Book extends React.Component {
     constructor(props) {
@@ -11,12 +10,11 @@ class Book extends React.Component {
     render() {
         return (
             <div className="book_info">
-                <img src= {this.props.book_cover} />
-                <h2>{this.props.name}</h2>
-                <h3>{this.props.author ? this.props.author.name : "No Author"}</h3>
-                <h4>${this.props.price}</h4>
-                <button type="button">Add to Cart</button> <br />
-                <Link to={`/book/${this.props.id}`}>Detail</Link>
+                <Link to="/bookdetail"><img src= {this.props.book_cover}/></Link>
+                <span className="title"><Link to="/bookdetail">{this.props.name}</Link></span>
+                <span className="author"><Link to="/authordetail">{this.author_name}</Link></span>
+                <span className="price">${this.props.price}</span>
+                <button type="button">Add to Cart</button>
             </div>
         )
     }

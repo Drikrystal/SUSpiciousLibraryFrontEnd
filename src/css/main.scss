@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
     margin: 0;
+    height: 100%;
 }
 
 ul {
@@ -16,12 +17,14 @@ a {
 }
 
 .top_nav {
-    padding: 1em;
     background-color: rgb(114, 98, 255);
     margin-bottom: 2em;
-
-    .container {
+    padding: 0;
+    
+    .container-nav {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 80vw;
         margin: 0 auto;
 
@@ -30,10 +33,12 @@ a {
             font-weight: bold;
             color: white;
             font-size: 1.2em;
-            margin-right: 5em;
     
             span {
                 color: rgb(0, 255, 115);
+            }
+            &:hover {
+                color: white;
             }
         }
     
@@ -47,7 +52,7 @@ a {
 
                 li {
                     vertical-align: middle;
-                    padding: .2em 2em;
+                    padding: .2em 1.5em;
                 }
             }
     
@@ -62,8 +67,65 @@ a {
             }
         }
     }
-
 }
+
+.login-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8em;
+    color: white;
+    font-size: 1em;
+    a {
+        color: white;
+        padding: 1em;
+    }
+}
+
+.cart-container {
+    display: flex;
+    a {
+        background-color: rgb(88, 212, 144);
+        color: white;
+        padding: 1em;
+
+        &:hover {
+            background-color: rgb(65, 156, 106);
+        }
+    }
+    span {
+        margin-left: .5em;
+    }
+}
+
+input {
+    border: none;
+    box-sizing: border-box;
+    appearance: none;
+    padding: .5em;
+    border-radius: 3px;
+    margin-right: .2em;
+    outline: none;
+
+    &:focus {
+        background-color: rgb(212, 255, 212);
+    transition: background-color 0.3s ease;
+    }
+}
+button {
+    border: none;
+    background-color: rgb(88, 212, 144);
+    padding: .5em 1em;
+    border-radius: 3px;
+    color: rgb(46, 46, 46);
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: rgb(65, 156, 106);
+    transition: background-color 0.3s ease;
+    }
+}
+
 
 
 .content_container {
@@ -71,7 +133,13 @@ a {
 
     input {
         width: 40vw;
-        height: 2em;
+        padding: 1em;
+        background-color:rgb(235, 235, 235);
+
+        &:focus {
+            background-color: rgb(212, 255, 212);
+        transition: background-color 0.3s ease;
+        }
     }
 }
 
@@ -80,18 +148,33 @@ a {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 80vw;
     margin: 1em auto;
+    gap: .3em;
 
     .book_info {
         background-color: rgb(114, 98, 255);
         padding: .3em;
-        margin-right: .3em;
-        margin-bottom: .3em;
         border-radius: 5px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            margin: .5em 0;
+            font-weight: bold;
+        }
+        a {
+            color: black;
+        }
 
         img {
             height: 200px;
             border-radius: 10px;
+        }
+        button {
+            margin: auto auto 0 auto;
+            width: 60%;
+            padding: .7em 1em;
+            font-size: .8em;
         }
     }
 }
