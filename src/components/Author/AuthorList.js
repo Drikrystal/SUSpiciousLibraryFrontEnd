@@ -1,4 +1,4 @@
-import { API } from "../api.js";
+import { API } from "../../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
 
