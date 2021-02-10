@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export var API = {
+export const API = {
     instance : axios.create({
         baseURL: 'http://localhost:5000/api/',
         timeout: 3000
@@ -8,19 +8,16 @@ export var API = {
     
     login: function(username, password)
     {
-        this.instance.post("http://localhost:5000/login/", {
+        return this.instance.post("http://localhost:5000/login/", {
             "username":username,
             "password":password
-        }).then((response) => {
-            this.instance.defaults.headers.common['Authorization'] ="JWT "+ response.data.token
-            localStorage.setItem("token", "JWT "+ response.data.token)
-        }).catch((error) => {
-            this.instance.defaults.headers.common['Authorization'] = null
         })
     }, 
     
-    get_current_user: function ()
+    get_current_user: async function (token)
     {
-        return this.instance.get("user").then((response) => response.data[0])
+        this.instance.defaults.headers.Authorization = "JWT " + token
+        const response = await this.instance.get("user");
+        return response.data[0];
     }
 }

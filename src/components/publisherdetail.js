@@ -2,11 +2,11 @@ import { API } from "../api.js";
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
-class BookDetail extends React.Component {
+class PublisherDetail extends React.Component {
 
     constructor(props){
         super(props)
-        this.state = { detail : '' , error: ''}
+        this.state = { detail : '' , error : '' }
     }
 
     componentDidMount()
@@ -22,20 +22,17 @@ class BookDetail extends React.Component {
         }) 
     }
 
-    render() {        
+    render() {
         if (this.state.error) {
-            return <div className="error">Error loading book</div>
+            return <div className="error">Error Loading Publisher</div>
         }
         return (
             <div className="book_info">
-                <img src= {this.state.detail.book_cover} alt="book-cover"/>
                 <h2>{this.state.detail.name}</h2>
-                <h3>{this.state.detail.author ? this.state.detail.author.name : "No Author"}</h3>
-                <h4>${this.state.detail.price}</h4>
-                <h4>{this.state.detail.description}</h4>
+                <h4>{this.state.detail.description ? this.state.detail.description : ""}</h4>
             </div>
         )
     }
 }
 
-export default withRouter(BookDetail);
+export default withRouter(PublisherDetail);
