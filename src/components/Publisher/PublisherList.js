@@ -1,4 +1,4 @@
-import { API } from "../api.js";
+import { API } from "../../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ class Publisher extends React.Component {
 
     render() {
         return (
-            <div className="book_info">
+            <div className="book-info">
                 <span className="title"><Link to={"/publisher/" + this.props.id}>{this.props.name}</Link></span>
             </div>
         )
@@ -49,9 +49,9 @@ export default class LoadPublishers extends React.Component {
 
     render(){
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <input type="text" name="search" placeholder="Search publisher..." onChange={this.searchPublisher}/>
-                <div className="search_list">
+                <div className="search-list">
                     {
                     this.state.loading 
                     ? <p>Loading Publishers...</p> 

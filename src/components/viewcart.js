@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-export class ViewCart extends React.Component {
+export default class ViewCart extends React.Component {
     render() {
         return (
             <div className="content-container">

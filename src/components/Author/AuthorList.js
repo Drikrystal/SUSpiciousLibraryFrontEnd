@@ -1,4 +1,4 @@
-import { API } from "../api.js";
+import { API } from "../../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ class Author extends React.Component {
 
     render() {
         return (
-            <div className="book_info">
+            <div className="book-info">
                 <Link to={"/author/" + this.props.id}><img src= {this.props.author_image}/></Link>
                 <span className="title"><Link to={"/author/" + this.props.id}>{this.props.name}</Link></span>
             </div>
@@ -50,9 +50,9 @@ export default class LoadAuthors extends React.Component {
 
     render(){
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <input type="text" name="search" placeholder="Search author..." onChange={this.searchAuthor}/>
-                <div className="search_list">
+                <div className="search-list">
                     {
                     this.state.loading 
                     ? <p>Loading Authors...</p> 

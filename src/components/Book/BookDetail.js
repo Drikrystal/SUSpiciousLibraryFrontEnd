@@ -1,4 +1,4 @@
-import { API } from "../api.js";
+import { API } from "../../api.js";
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
@@ -22,8 +22,8 @@ export class BookDetail extends React.Component {
 
     render() {        
         return (
-            <div className="content_container">
-                <div className="book_info">
+            <div className="content-container">
+                <div className="book-detail">
                     <img src= {this.state.detail.book_cover} />
                     <h2>{this.state.detail.name}</h2>
                     <h3>{this.state.detail.author ? this.state.detail.author.name : "No Author"}</h3>

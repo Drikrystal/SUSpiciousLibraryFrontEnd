@@ -27,9 +27,11 @@ class PublisherDetail extends React.Component {
             return <div className="error">Error Loading Publisher</div>
         }
         return (
-            <div className="book_info">
-                <h2>{this.state.detail.name}</h2>
-                <h4>{this.state.detail.description ? this.state.detail.description : ""}</h4>
+            <div className="content-container">
+                <div className="book-info">
+                    <h2>{this.state.detail.name}</h2>
+                    <h4>{this.state.detail.description ? this.state.detail.description : ""}</h4>
+                </div>
             </div>
         )
     }
