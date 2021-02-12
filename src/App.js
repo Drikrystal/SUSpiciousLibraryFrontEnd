@@ -13,9 +13,14 @@ import { Login } from './components/Login';
 
 import Navbar from "./components/shared/Navbar"
 
+import { store } from "./store/store"
+
+import { Provider } from "react-redux";
+
 function App() {
   return (
-      <Router >
+    <Provider store={store}>
+      <Router>
         <Navbar></Navbar>
         <Route path="/" exact component= { Home }></Route>
         <Route path="/books" component= { LoadBooks }></Route>
@@ -26,6 +31,7 @@ function App() {
         <Route path="/publisher/:id" component={ PublisherDetail }></Route>
         <Route path="/login" component={ Login }></Route>      
       </Router>
+    </Provider>
   )
 }
 

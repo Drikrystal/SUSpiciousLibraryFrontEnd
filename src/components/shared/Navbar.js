@@ -2,8 +2,14 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import cartIcon from "./shopping-cart.svg";
 import userIcon from "./user.svg";
+import { connect } from "react-redux";
 
-export default class Navbar extends React.Component{
+class Navbar extends React.Component{
+
+    constructor(props) {
+        super(props)
+    }
+
     render()
     {
         return (
@@ -22,7 +28,7 @@ export default class Navbar extends React.Component{
                         <Link to="/login"><img src= {userIcon} alt="Cart Icon"/> Welcome, <span className="user-name">Login</span></Link>
                     </div>
                     <div className="cart-container">
-                        <Link to="/cart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">0</span></Link>
+                        <Link to="/cart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">{this.props.cartItemCount}</span></Link>
                     </div>
                 </div>
             </div>
@@ -30,12 +36,8 @@ export default class Navbar extends React.Component{
     }
 }
 
-/*
-    <div class="login-container">
-        <form action="none">
-            <input type="text" placeholder="Username" name="username">
-            <input type="text" placeholder="Password" name="psw">
-            <button type="submit">Login</button>
-        </form>
-    </div>
-    */
+const mapStateToProps = (state) => {
+    return { cartItemCount : state.cart.amount }
+}
+
+export default connect(mapStateToProps)(Navbar)
