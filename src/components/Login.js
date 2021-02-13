@@ -1,27 +1,15 @@
 import React from 'react';
-import { API } from '../api';
-import { Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { LoginUser } from "../store/actions/thunks/loginActions";
 
-export class Login extends React.Component {
 
+class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = { redirect : '' }
         this.handleSubmit = this.handleSubmit.bind(this)
-    }
-    
-    componentDidMount()
-    {    
-        let token = localStorage.getItem('token')
-        if (token != null) {
-            // if there is a token and token is valid for the user,
-            // redirect, else do nothing and let the user login
-            API.get_current_user(token).then((response) => {
-                this.setState({
-                    redirect : "/"
-                })
-            })
-        }
     }
 
     handleSubmit(event)
@@ -29,19 +17,13 @@ export class Login extends React.Component {
         event.preventDefault()
         let username = event.target.username.value
         let password = event.target.password.value
-        API.login(username, password).then((response) => {
-            localStorage.setItem("token", response.data.token)
-            this.setState({
-                redirect : "/"
-            })
-        }).catch((error) => {
-            console.log(error)
-        })
+        this.props.login(username, password)
     }
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
+        if (this.props.isLoggedIn) {
+            this.props.history.goBack();
+            return null
         }
         return (
             <div className="content_container">
@@ -55,3 +37,18 @@ export class Login extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => 
+{
+    return {
+        isLoggedIn : state.session.isLoggedIn
+    }
+}
+
+const mapDispatchToProps = (dispatch) => 
+{
+    return {
+        login: bindActionCreators(LoginUser, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

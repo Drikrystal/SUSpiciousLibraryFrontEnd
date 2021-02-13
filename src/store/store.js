@@ -1,19 +1,17 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducer from "./reducers/index"
+import thunk from "redux-thunk"
 
-/*const initialStore = {
-    books : [],
-    publishers : [],
-    authors : [],
-    categories :  [],
-    cart : {
-        items : [],
-        total : 0,
-        amount : 0
-    },
-    session : {
-        token : null
-    }
-}*/
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-export const store = createStore(reducer)
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export const store = createStore( persistedReducer,applyMiddleware(thunk));
+
+export const persistor = persistStore(store);

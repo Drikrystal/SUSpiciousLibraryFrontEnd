@@ -19,5 +19,13 @@ export const API = {
         this.instance.defaults.headers.Authorization = "JWT " + token
         const response = await this.instance.get("user");
         return response.data[0];
+    },
+
+    add_book_to_cart : async function (token, bookId) {
+        this.instance.defaults.headers.Authorization = "JWT " + token
+        const response = await this.instance.post("cart/", {
+            "book" : bookId 
+        });
+        return response.data;
     }
 }
