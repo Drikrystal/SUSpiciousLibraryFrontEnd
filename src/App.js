@@ -27,7 +27,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <Navbar></Navbar>
-          <ToastContainer />
+          <ToastContainer position="bottom-right" />
           <Route path="/" exact component= { Home }></Route>
           <Route path="/books" component= { LoadBooks }></Route>
           <Route path="/authors" component={ LoadAuthors }></Route>      

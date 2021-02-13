@@ -20,6 +20,7 @@ export default function cart(state=initialCartState, action)
                     ...state.items,
                     action.payload.item
                 ],
+                total : (Number(state.total) + Number(action.payload.item.price)).toFixed(2),
                 amount : state.amount + 1
             }
         case types.CART_ACTION_FAILURE:
@@ -29,18 +30,14 @@ export default function cart(state=initialCartState, action)
                 error : action.error
             }
         case types.DELETE_BOOK_FROM_CART:
+            let itemToDel = state.items.find(book => book.id === action.payload.id)
+            let itemToDelAmount = state.items.filter(book => book.id === action.payload.id).length
+            console.log(itemToDelAmount)
             return {
                 ...state, 
-                items : state.items.filter((book) => book.id !== action.payload.id)
-            }
-        
-        case types.INCREASE_BOOK_AMOUNT_IN_CART:
-            return {
-                ...state,
-            }
-        case types.DECREASE_BOOK_AMOUNT_IN_CART:
-            return {
-                ...state
+                items : state.items.filter(book => book.id !== action.payload.id),
+                total : (Number(state.total) - Number(itemToDel.price * itemToDelAmount)).toFixed(2),
+                amount : state.amount - itemToDelAmount
             }
         default:
             return state

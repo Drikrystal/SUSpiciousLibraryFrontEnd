@@ -27,5 +27,14 @@ export const API = {
             "book" : bookId 
         });
         return response.data;
+    },
+    remove_book_from_cart : async function (token, bookId, deleteAmount) {
+        this.instance.defaults.headers.Authorization = "JWT " + token
+        const response = await this.instance.delete("cart/", { data: {
+                "book" : bookId,
+                "delete_amount" : deleteAmount
+            }
+        });
+        return response.data;
     }
 }

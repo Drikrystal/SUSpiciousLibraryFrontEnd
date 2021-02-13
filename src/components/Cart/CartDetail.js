@@ -13,16 +13,21 @@ class ViewCart extends React.Component {
                 <h1>Your Cart</h1>
                 <div className="cart-list">
                     {this.props.cart.items.map((book, i) => {     
-                        return (<CartItem key={book.id} book={book} />) 
+                        return (<CartItem key={i} book={book} />) 
                     })}
                 </div>
+                <div>Total : ${this.props.total} </div>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return { cart: state.cart, total: state.cart.total, amount: state.cart.amount }
+    return { 
+        cart: state.cart, 
+        total: state.cart.total, 
+        amount: state.cart.amount
+    }
 }
 
 export default connect(mapStateToProps)(ViewCart)

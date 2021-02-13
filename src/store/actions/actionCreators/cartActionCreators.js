@@ -11,10 +11,9 @@ export const addBookToCartFailure = (error) => ({
     error: error
 })
 
-export const decreaseBookAmount = () => ({
-    type: types.DECREASE_BOOK_AMOUNT_IN_CART,
-})
-
-export const increaseBookAmount = () => ({
-    type: types.INCREASE_BOOK_AMOUNT_IN_CART,
+export const deleteBookFromCart = (bookId) => ({
+    type: types.DELETE_BOOK_FROM_CART,
+    payload: {
+        id : bookId
+    }
 })

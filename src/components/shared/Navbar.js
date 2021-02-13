@@ -25,7 +25,12 @@ class Navbar extends React.Component{
                         </ul>
                     </nav>
                     <div className="login-container">
-                        <Link to="/login"><img src= {userIcon} alt="Cart Icon"/> Welcome, <span className="user-name">Login</span></Link>
+                        { this.props.isLoggedIn ?<div>Welcome, Enjoy!</div> :
+                        <Link to="/login">
+                            <img src= {userIcon} alt="Cart Icon"/> Welcome, 
+                            <span className="user-name">Login</span>
+                        </Link>
+                        } 
                     </div>
                     <div className="cart-container">
                         <Link to="/cart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">{this.props.cartItemCount}</span></Link>
@@ -37,7 +42,7 @@ class Navbar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { cartItemCount : state.cart.amount }
+    return { cartItemCount : state.cart.amount, isLoggedIn: state.session.isLoggedIn }
 }
 
 export default connect(mapStateToProps)(Navbar)
