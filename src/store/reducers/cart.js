@@ -15,7 +15,12 @@ export default function cart(state=initialCartState, action)
         case types.ADD_BOOK_TO_CART:
             toast.success(action.payload.detail)
             return {
-                ...state
+                ...state,
+                items: [
+                    ...state.items,
+                    action.payload.item
+                ],
+                amount : state.amount + 1
             }
         case types.CART_ACTION_FAILURE:
             toast.error(action.error.statusText)

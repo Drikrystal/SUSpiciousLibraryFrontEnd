@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom'
 import { connect } from "react-redux"
 
 class CartItem extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
     render() {
+        console.log(this.props)
         return (
             <div className="book-info">
-                <Link to={"/book/" + this.props.book.id}><img src= {this.props.book.book_cover}/></Link>
+                <Link to={"/book/" + this.props.book.id}><img src= {this.props.book.book_cover} alt="book-cover"/></Link>
                 <span className="title"><Link to={"/book/" + this.props.book.id}>{this.props.book.name}</Link></span>
                 <span className="author"><Link to="/author/">{this.props.book.author ? this.props.book.author.name : "No Author"}</Link></span>
                 <span className="price">${this.props.book.price}</span>
