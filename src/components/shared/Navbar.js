@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import cartIcon from "./shopping-cart.svg";
 import userIcon from "./user.svg";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { LogoutUser } from '../../store/actions/thunks/loginActions';
 
 class Navbar extends React.Component{
 
@@ -25,7 +27,7 @@ class Navbar extends React.Component{
                         </ul>
                     </nav>
                     <div className="login-container">
-                        { this.props.isLoggedIn ?<div>Welcome, Enjoy!</div> :
+                        { this.props.isLoggedIn ? <button onClick={() => this.props.logout()}>Logout</button> :
                         <Link to="/login">
                             <img src= {userIcon} alt="Cart Icon"/> Welcome, 
                             <span className="user-name">Login</span>
@@ -42,7 +44,13 @@ class Navbar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { cartItemCount : state.cart.amount, isLoggedIn: state.session.isLoggedIn }
+    return { cartItemCount : state.cart.total_amount, isLoggedIn: state.session.isLoggedIn }
 }
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout : bindActionCreators(LogoutUser, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

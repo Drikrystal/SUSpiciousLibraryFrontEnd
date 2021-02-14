@@ -18,7 +18,6 @@ export default function categories(state=initialCategoryState, action)
                 isFetching : true
             }
         case types.GET_CATEGORIES_SUCCESS:
-            console.log(action.payload.results)
             return {
                 categories : [
                     ...action.payload.results

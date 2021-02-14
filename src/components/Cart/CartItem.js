@@ -12,7 +12,8 @@ class CartItem extends React.Component{
                 <span className="title"><Link to={"/book/" + this.props.book.id}>{this.props.book.name}</Link></span>
                 <span className="author"><Link to="/author/">{this.props.book.author ? this.props.book.author.name : "No Author"}</Link></span>
                 <span className="price">${this.props.book.price}</span>
-                <button type="button" onClick={() => this.props.remove(this.props.book.id)}>x</button>
+                <span className="amount">Amount : {this.props.amount}</span>
+                <button type="button" onClick={() => this.props.remove(this.props.book.id, 1)}>x</button>
             </div>
         )
     }

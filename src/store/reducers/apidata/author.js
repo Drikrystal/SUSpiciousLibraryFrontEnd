@@ -18,7 +18,6 @@ export default function authors(state=initialAuthorState, action)
                 isFetching : true
             }
         case types.GET_AUTHORS_SUCCESS:
-            console.log(action.payload.results)
             return {
                 authors : [
                     ...action.payload.results

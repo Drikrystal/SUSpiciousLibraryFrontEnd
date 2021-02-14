@@ -36,5 +36,17 @@ export const API = {
             }
         });
         return response.data;
+    },
+
+    get_cart : async function(token) {
+        this.instance.defaults.headers.Authorization = "JWT " + token
+        const response = await this.instance.get("cart")
+        return response.data;
+    },
+
+    clear_cart : async function(token) {
+        this.instance.defaults.headers.Authorization = "JWT " + token
+        const response = await this.instance.delete("cart/")
+        return response.data;
     }
 }
