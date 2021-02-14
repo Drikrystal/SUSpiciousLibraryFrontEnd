@@ -1,58 +1,26 @@
-import { API } from "../../api.js";
 import React from 'react';
+import { connect}  from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchBooks } from "../../store/actions/thunks/dataActions";
+import { AddBookToCart } from "../../store/actions/thunks/cartActions";
 import { Link } from "react-router-dom";
 
-class Book extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+class BookItem extends React.Component {
     render() {
-        let author_span = <span className="author">Unknown Author</span>
-        if (this.props.author) {
-            author_span = <span className="author"><Link to={"/author/" + this.props.author.id}>{this.props.author.name}</Link></span>
-        }
         return (
-            <div className="book_info">
-                <Link to={"/book/" + this.props.id}><img src= {this.props.book_cover}/></Link>
-                <span className="title"><Link to={"/book/" + this.props.id}>{this.props.name}</Link></span>
-                { author_span }
-                <span className="price">${this.props.price}</span>
-                <button type="button">Add to Cart</button>
+            <div>
+                <Link to={"book/" + this.props.id}><img src= {this.props.book_cover} alt="book-cover"/></Link> 
+                <h2>{this.props.name}</h2>
+                <h3>{this.props.author ? this.props.author.name : "No Author"}</h3>
+                <h4>${this.props.price}</h4>
             </div>
         )
     }
 }
 
-export default class LoadBooks extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = { loading: true, books : [], filtered_books: [] }
-        // bind "this" so the function will have a reference to this component and its state
-        this.searchBook = this.searchBook.bind(this)
-    }
-
+class LoadBooks extends React.Component {
     componentDidMount() {
-        API.instance.get("book").then((response) => {
-            response.data.results.forEach((book) => {
-                let e = <Book key={book.id} {...book} ></Book>
-                this.setState({
-                    books: [...this.state.books, e], 
-                    filtered_books : [...this.state.books, e]
-                })
-            })
-            this.setState({
-                loading : false
-            })
-        });
-    }
-
-    searchBook(input) {
-        this.setState({
-            filtered_books : this.state.books.filter(book => {
-                return book.props.name.toLowerCase().includes(input.target.value.toLowerCase())
-            })
-        })
+        this.props.loadBooks()
     }
 
     render(){
@@ -60,13 +28,33 @@ export default class LoadBooks extends React.Component {
             <div className="content_container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
                 <div className="search_list">
-                    {
-                    this.state.loading 
-                    ? <p>Loading Books...</p> 
-                    : <> {this.state.filtered_books} </>
+                    { this.props.isFetching ? <p>Loading Books...</p>
+                    : this.props.books.map((book, i) =>  { 
+                        return <div className="book_info" key={i}>
+                            <BookItem {...book} ></BookItem> 
+                            <button onClick={() => this.props.addToCart(book.id)}>Add To Cart</button>
+                        </div>
+                        })
                     }
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        books : state.book.books,
+        isFetching : state.book.isFetching,
+        session : state.session
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadBooks: bindActionCreators(fetchBooks, dispatch),
+        addToCart : bindActionCreators(AddBookToCart, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoadBooks)

@@ -1,38 +1,27 @@
-import { API } from "../../api.js";
 import React from 'react';
 import { withRouter } from "react-router-dom";
+import { connect}  from "react-redux";
+import { compose } from 'redux';
 
 class PublisherDetail extends React.Component {
 
-    constructor(props){
-        super(props)
-        this.state = { detail : '' , error : '' }
-    }
-
-    componentDidMount()
-    {
-        API.instance.get(`${this.props.match.url}`).then((response) => {
-            this.setState({
-                detail : response.data
-            })
-        }).catch((error) => {
-            this.setState({
-                error : error
-            })
-        }) 
-    }
-
     render() {
-        if (this.state.error) {
-            return <div className="error">Error Loading Publisher</div>
-        }
         return (
             <div className="book_info">
-                <h2>{this.state.detail.name}</h2>
-                <h4>{this.state.detail.description ? this.state.detail.description : ""}</h4>
+                <h2>{this.props.detail.name}</h2>
+                <h4>{this.props.detail.description ? this.state.props.description : ""}</h4>
             </div>
         )
     }
 }
+const mapStateToProps = (store, ownProps) => {
+    return {
+        detail : store.publisher.publishers.filter((publisher) => publisher.id.toString() === ownProps.match.params.id)[0]
+    }
+}
 
-export default withRouter(PublisherDetail);
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps)
+)(PublisherDetail);
