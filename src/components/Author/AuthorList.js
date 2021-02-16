@@ -1,12 +1,10 @@
-import { API } from "../../api.js";
 import React from 'react';
 import { Link } from "react-router-dom";
+import { fetchAuthors } from "../../store/actions/thunks/dataActions.js";
+import { bindActionCreators } from "redux";
+import { connect } from 'react-redux'
 
 class Author extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="book-info">
@@ -17,49 +15,39 @@ class Author extends React.Component {
     }
 }
 
-export default class LoadAuthors extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = { loading: true, authors : [], filtered_authors: [] }
-        // bind "this" so the function will have a reference to this component and its state
-        this.searchAuthor = this.searchAuthor.bind(this)
+class LoadAuthors extends React.Component {
+    componentDidMount(){
+        this.props.loadAuthors()
     }
-
-    componentDidMount() {
-        API.instance.get("author").then((response) => {
-            response.data.results.forEach((author) => {
-                let e = <Author key={author.id} {...author} ></Author>
-                this.setState({
-                    authors: [...this.state.authors, e], 
-                    filtered_authors : [...this.state.authors, e]
-                })
-            })
-            this.setState({
-                loading : false
-            })
-        });
-    }
-
-    searchAuthor(input) {
-        this.setState({
-            filtered_authors : this.state.authors.filter(author => {
-                return author.props.name.toLowerCase().includes(input.target.value.toLowerCase())
-            })
-        })
-    }
-
     render(){
         return (
             <div className="content-container">
                 <input type="text" name="search" placeholder="Search author..." onChange={this.searchAuthor}/>
-                <div className="search-list">
-                    {
-                    this.state.loading 
-                    ? <p>Loading Authors...</p> 
-                    : <> {this.state.filtered_authors} </>
+                <div className="search_list">
+                    { this.props.isFetching ? <p>Loading Authors...</p>
+                    : this.props.authors.map((author, i) =>  {
+                           return <Author key={i} {...author} ></Author> 
+                        })
                     }
                 </div>
             </div>
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        authors : state.author.authors,
+        isFetching : state.author.isFetching,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadAuthors: bindActionCreators(fetchAuthors, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoadAuthors)
