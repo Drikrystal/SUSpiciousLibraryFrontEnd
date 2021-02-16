@@ -34,7 +34,7 @@ class Navbar extends React.Component{
                         </Link>
                         } 
                     </div>
-                    <div className="cart-container">
+                    <div className="cart-nav-container">
                         <Link to="/cart"><img src= {cartIcon} alt="Cart Icon"/> <span className="cart-count">{this.props.cartItemCount}</span></Link>
                     </div>
                 </div>

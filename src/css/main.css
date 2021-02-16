@@ -22,9 +22,10 @@ a {
 }
 
 .top-nav .container-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -98,23 +99,23 @@ a {
   padding: 1em;
 }
 
-.cart-container {
+.cart-nav-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.cart-container a {
+.cart-nav-container a {
   background-color: #58d490;
   color: white;
   padding: 1em;
 }
 
-.cart-container a:hover {
+.cart-nav-container a:hover {
   background-color: #419c6a;
 }
 
-.cart-container span {
+.cart-nav-container span {
   margin-left: .5em;
 }
 
@@ -199,7 +200,11 @@ button:hover {
 }
 
 .search-list .book-info a {
-  color: black;
+  color: #141b1a;
+}
+
+.search-list .book-info a:hover {
+  color: #3bbb9b;
 }
 
 .search-list .book-info img {
@@ -208,6 +213,55 @@ button:hover {
 }
 
 .search-list .book-info button {
+  margin: auto auto 0 auto;
+  width: 60%;
+  padding: .7em 1em;
+  font-size: .8em;
+}
+
+.cart-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 80vw;
+  margin: 1em auto;
+  gap: .3em;
+}
+
+.cart-list .book-info {
+  background-color: #7262ff;
+  padding: .3em;
+  border-radius: 5px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cart-list .book-info span {
+  margin: .5em 0;
+  font-weight: bold;
+}
+
+.cart-list .book-info a {
+  color: #141b1a;
+}
+
+.cart-list .book-info a:hover {
+  color: #3bbb9b;
+}
+
+.cart-list .book-info img {
+  height: 200px;
+  border-radius: 10px;
+}
+
+.cart-list .book-info button {
   margin: auto auto 0 auto;
   width: 60%;
   padding: .7em 1em;

@@ -10,11 +10,12 @@ class BookDetail extends React.Component {
         if (this.props.detail) {
             return (
               <div className="content-container">
-                <div className="book-detail"
+                <div className="book-detail">
                   <div className="book-info">
-                    <Link to={"/book/" + this.props.detail.id}><img src= {this.props.detail.book_cover} alt="book-cover"/></Link> 
+                    <img src= {this.props.detail.book_cover} alt="book-cover"/>
                     <h2>{this.props.detail.name}</h2>
-                    <h3>{this.props.detail.author ? this.props.detail.author.name : "No Author"}</h3>
+                    <h3><Link to="/authordetail">{this.props.detail.author ? this.props.detail.author.name : "No Author"}</Link></h3>
+                    <h2>XDXDXD {this.props.detail.description}</h2>
                     <h4>${this.props.detail.price}</h4>
                   </div>
                 </div>
