@@ -44,7 +44,7 @@ export class Login extends React.Component {
             return <Redirect to={this.state.redirect} />
         }
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <h1>Customer Login</h1>
                 <form onSubmit={this.handleSubmit} method="POST">
                     <input type="text" placeholder="Username" name="username" />
