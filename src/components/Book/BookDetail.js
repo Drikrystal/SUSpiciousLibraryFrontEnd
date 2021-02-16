@@ -4,16 +4,21 @@ import { Link } from "react-router-dom";
 import { compose } from 'redux';
 import { connect } from 'react-redux'
 
+
 class BookDetail extends React.Component {
     render() {
         if (this.props.detail) {
             return (
-                <div className="book_info">
+              <div className="content-container">
+                <div className="book-detail"
+                  <div className="book-info">
                     <Link to={"/book/" + this.props.detail.id}><img src= {this.props.detail.book_cover} alt="book-cover"/></Link> 
                     <h2>{this.props.detail.name}</h2>
                     <h3>{this.props.detail.author ? this.props.detail.author.name : "No Author"}</h3>
                     <h4>${this.props.detail.price}</h4>
+                  </div>
                 </div>
+              </div>
             )
         } else {
             return <div>Error</div>

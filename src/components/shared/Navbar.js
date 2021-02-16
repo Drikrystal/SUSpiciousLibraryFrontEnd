@@ -15,8 +15,8 @@ class Navbar extends React.Component{
     render()
     {
         return (
-            <div className="top_nav navbar sticky-top">
-                <div className ="container-nav">
+            <div className="top-nav navbar sticky-top">
+                <div className="container-nav">
                     <Link to="/" className="logo">Buy<span>Books</span>Here</Link>
                     <nav>
                         <ul>

@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 class BookItem extends React.Component {
     render() {
         return (
-            <div>
+            <div className="book-info">
                 <Link to={"book/" + this.props.id}><img src= {this.props.book_cover} alt="book-cover"/></Link> 
-                <h2>{this.props.name}</h2>
-                <h3>{this.props.author ? this.props.author.name : "No Author"}</h3>
-                <h4>${this.props.price}</h4>
+                <span className="title">{this.props.name}</span>
+                <span className="author">{this.props.author ? this.props.author.name : "No Author"}</span>
+                <span className="price">${this.props.price}</span>
             </div>
         )
     }
@@ -25,12 +25,12 @@ class LoadBooks extends React.Component {
 
     render(){
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
-                <div className="search_list">
+                <div className="search-list">
                     { this.props.isFetching ? <p>Loading Books...</p>
                     : this.props.books.map((book, i) =>  { 
-                        return <div className="book_info" key={i}>
+                        return <div className="book-info" key={i}>
                             <BookItem {...book} ></BookItem> 
                             <button onClick={() => this.props.addToCart(book.id)}>Add To Cart</button>
                         </div>
@@ -41,6 +41,7 @@ class LoadBooks extends React.Component {
         )
     }
 }
+
 
 const mapStateToProps = (state) => {
     return {
@@ -58,3 +59,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoadBooks)
+
+// <span className="publisher"><Link to={"/publisher/" + this.props.publisher.id}>{this.props.publisher.name}</Link></span>

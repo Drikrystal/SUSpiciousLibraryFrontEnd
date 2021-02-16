@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 class Author extends React.Component {
     render() {
         return (
-            <div className="book_info">
+            <div className="book-info">
                 <Link to={"/author/" + this.props.id}><img src= {this.props.author_image}/></Link>
                 <span className="title"><Link to={"/author/" + this.props.id}>{this.props.name}</Link></span>
             </div>
@@ -21,7 +21,7 @@ class LoadAuthors extends React.Component {
     }
     render(){
         return (
-            <div className="content_container">
+            <div className="content-container">
                 <input type="text" name="search" placeholder="Search author..." onChange={this.searchAuthor}/>
                 <div className="search_list">
                     { this.props.isFetching ? <p>Loading Authors...</p>

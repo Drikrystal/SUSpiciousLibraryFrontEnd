@@ -16,7 +16,7 @@ a {
     text-decoration: none;
 }
 
-.top_nav {
+.top-nav {
     background-color: rgb(114, 98, 255);
     margin-bottom: 2em;
     padding: 0;
@@ -128,7 +128,7 @@ button {
 
 
 
-.content_container {
+.content-container {
     text-align: center;
 
     input {
@@ -143,14 +143,14 @@ button {
     }
 }
 
-.search_list {
+.search-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 80vw;
     margin: 1em auto;
     gap: .3em;
 
-    .book_info {
+    .book-info {
         background-color: rgb(114, 98, 255);
         padding: .3em;
         border-radius: 5px;

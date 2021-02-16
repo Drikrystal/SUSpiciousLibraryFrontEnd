@@ -7,10 +7,12 @@ class PublisherDetail extends React.Component {
 
     render() {
         return (
-            <div className="book_info">
+          <div className="content-container">
+            <div className="book-info">
                 <h2>{this.props.detail.name}</h2>
                 <h4>{this.props.detail.description ? this.state.props.description : ""}</h4>
             </div>
+          </div>
         )
     }
 }
