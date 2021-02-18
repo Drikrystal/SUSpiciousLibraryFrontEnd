@@ -22,7 +22,8 @@ a {
     padding: 0;
     
     .container-nav {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
         justify-content: space-between;
         align-items: center;
         width: 80vw;
@@ -81,7 +82,7 @@ a {
     }
 }
 
-.cart-container {
+.cart-nav-container {
     display: flex;
     a {
         background-color: rgb(88, 212, 144);
@@ -96,6 +97,8 @@ a {
         margin-left: .5em;
     }
 }
+
+
 
 input {
     border: none;
@@ -163,7 +166,49 @@ button {
             font-weight: bold;
         }
         a {
-            color: black;
+            color: rgb(20, 27, 26);
+            &:hover {
+                color: rgb(59, 187, 155);
+            }
+        }
+
+        img {
+            height: 200px;
+            border-radius: 10px;
+        }
+        button {
+            margin: auto auto 0 auto;
+            width: 60%;
+            padding: .7em 1em;
+            font-size: .8em;
+        }
+    }
+}
+
+.cart-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 80vw;
+    margin: 1em auto;
+    gap: .3em;
+
+    .book-info {
+        background-color: rgb(114, 98, 255);
+        padding: .3em;
+        border-radius: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            margin: .5em 0;
+            font-weight: bold;
+        }
+        a {
+            color: rgb(20, 27, 26);
+            &:hover {
+                color: rgb(59, 187, 155);
+            }
         }
 
         img {

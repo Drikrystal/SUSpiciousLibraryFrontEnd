@@ -23,7 +23,7 @@ class LoadAuthors extends React.Component {
         return (
             <div className="content-container">
                 <input type="text" name="search" placeholder="Search author..." onChange={this.searchAuthor}/>
-                <div className="search_list">
+                <div className="search-list">
                     { this.props.isFetching ? <p>Loading Authors...</p>
                     : this.props.authors.map((author, i) =>  {
                            return <Author key={i} {...author} ></Author> 
