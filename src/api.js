@@ -14,6 +14,11 @@ export const API = {
         })
     }, 
     
+    // TODO REGISTER
+    register : function(user) {
+
+    },
+
     get_current_user: async function (token)
     {
         this.instance.defaults.headers.Authorization = "JWT " + token
