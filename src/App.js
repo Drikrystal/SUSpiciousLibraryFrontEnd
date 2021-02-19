@@ -1,7 +1,6 @@
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
 import Home from './components/Home'
-import ViewCart from './components/ViewCart'
 
 import LoadBooks from './components/Book/BookList'
 import LoadAuthors from './components/Author/AuthorList'
