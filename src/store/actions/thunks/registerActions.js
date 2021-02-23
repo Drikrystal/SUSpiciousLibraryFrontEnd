@@ -7,11 +7,7 @@ export function RegisterUser(user) {
         API.register(user).then((response) => {
             dispatch(registerActions.registerSuccess(response))
         }).catch((err) => {
-            let error = {
-                "statusText": "Register Failed"
-            }
-            console.log(err)
-            dispatch(registerActions.registerFailed(error))
+            dispatch(registerActions.registerFailed(err.response.data))
         })
     }
 }

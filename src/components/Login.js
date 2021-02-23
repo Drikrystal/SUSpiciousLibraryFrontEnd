@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { LoginUser } from "../store/actions/thunks/loginActions";
 
@@ -8,7 +8,6 @@ import { LoginUser } from "../store/actions/thunks/loginActions";
 class Login extends React.Component {
     constructor(props){
         super(props)
-        this.state = { redirect : '' }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -33,6 +32,7 @@ class Login extends React.Component {
                     <input type="password" placeholder="Password" name="password" />
                     <button type="submit">Login</button>
                 </form>
+                <Link to="register">Register Here</Link>
             </div>
         )
     }

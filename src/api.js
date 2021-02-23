@@ -14,9 +14,8 @@ export const API = {
         })
     }, 
     
-    // TODO REGISTER
     register : function(user) {
-
+        return this.instance.post("http://localhost:5000/register/", user)
     },
 
     get_current_user: async function (token)
