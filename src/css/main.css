@@ -267,4 +267,8 @@ button:hover {
   padding: .7em 1em;
   font-size: .8em;
 }
+
+span.error {
+  color: red; 
+}
 /*# sourceMappingURL=main.css.map */

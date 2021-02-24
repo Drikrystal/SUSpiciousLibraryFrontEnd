@@ -6,14 +6,16 @@ let initialSessionState = {
     token : null,
     isLogging : false,
     isLoggedIn : false,
-    error : {}
+    loginError : {},
+    registerError : {}
 }
 
 export default function session(state=initialSessionState, action)
 {
     switch (action.type)
     {
-        case types.LOGIN_USER:
+        case types.LOGIN_USER: 
+        case types.REGISTER_USER:
             return {
                 ...state,
                 isLogging : true
@@ -31,8 +33,9 @@ export default function session(state=initialSessionState, action)
             return {
                 ...state,
                 token : null,
+                isLogging : false,
                 isLoggedIn : false,
-                error: action.error
+                loginError : action.error
             }
         case types.LOGOUT_USER:
             toast.success("Logged out Successfully")
@@ -40,6 +43,23 @@ export default function session(state=initialSessionState, action)
                 ...state,
                 token : null,
                 isLoggedIn : false
+            }
+        case types.REGISTER_SUCCESSFUL:
+            toast.success("Registered Successfully")
+            return {
+                ...state,
+                token : action.payload.token,
+                isLogging : false,
+                isLoggedIn : true
+            }
+        case types.REGISTER_FAILED:
+            toast.warn("Registration Failed")
+            return {
+                ...state,
+                token : null,
+                isLoggedIn : false,
+                isLogging: false,
+                registerError : action.error
             }
         default:
             return state

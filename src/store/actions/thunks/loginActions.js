@@ -43,7 +43,7 @@ export function LogoutUser() {
     return function (dispatch, getState) {
         if (getState().session.token){
             dispatch(loginActions.logoutUser())
-            dispatch(ClearCart(getState().session.token))
+            dispatch(ClearCart())
         }
     }
 }

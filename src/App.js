@@ -20,6 +20,7 @@ import { store, persistor } from "./store/store"
 
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
+import Register from './components/Register';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/author/:id" component={ AuthorDetail }></Route>      
           <Route path="/publisher/:id" component={ PublisherDetail }></Route>
           <Route path="/login" component={ Login }></Route>
+          <Route path="/register" exact component={Register}></Route>
           <Route path="/cart" component={ CartDetail }></Route>
         </Router>
       </PersistGate>
