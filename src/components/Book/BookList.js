@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect}  from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchBooks } from "../../store/actions/thunks/dataActions";
 import { AddBookToCart } from "../../store/actions/thunks/cartActions";
 import { Link } from "react-router-dom";
 
@@ -24,21 +23,29 @@ class BookItem extends React.Component {
 }
 
 class LoadBooks extends React.Component {
-    componentDidMount() {
-        this.props.loadBooks()
+    constructor(props){
+        super(props)
+        this.state = { filtered_books: this.props.books }
+        this.searchBook = this.searchBook.bind(this)
     }
-
+    searchBook(input) {
+        this.setState({
+            filtered_books : this.props.books.filter(book => {
+                return book.name.toLowerCase().includes(input.target.value.toLowerCase())
+            })
+        })
+    }
     render(){
         return (
             <div className="content-container">
                 <input type="text" name="search" placeholder="Search book..." onChange={this.searchBook}/>
                 <div className="search-list">
-                    { this.props.isFetching ? <p>Loading Books...</p>
-                    : this.props.books.map((book, i) =>  { 
-                        return <div className="book-info" key={i}>
-                            <BookItem {...book} ></BookItem> 
-                            <button onClick={() => this.props.addToCart(book.id)}>Add To Cart</button>
-                        </div>
+                    {
+                        this.state.filtered_books.map((book, i) =>  { 
+                            return <div className="book-info" key={i}>
+                                <BookItem {...book} ></BookItem> 
+                                <button onClick={() => this.props.addToCart(book.id)}>Add To Cart</button>
+                            </div>
                         })
                     }
                 </div>
@@ -51,14 +58,12 @@ class LoadBooks extends React.Component {
 const mapStateToProps = (state) => {
     return {
         books : state.book.books,
-        isFetching : state.book.isFetching,
         session : state.session
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadBooks: bindActionCreators(fetchBooks, dispatch),
         addToCart : bindActionCreators(AddBookToCart, dispatch)
     }
 }

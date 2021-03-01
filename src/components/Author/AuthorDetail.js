@@ -9,7 +9,7 @@ class AuthorDetail extends React.Component {
           return (
             <div className="content-container">
               <div className="author-detail">
-                <img src= {this.props.detail.author_image} alt="author-image"/>
+                <img src= {this.props.detail.author_image} alt="author"/>
                 <h2>{this.props.detail.name}</h2>
                 <h4>{this.props.detail.about}</h4>
                 <h4>Birth Date : {this.props.detail.birth_date ? this.props.detail.birth_date : "Unknown" }</h4>
