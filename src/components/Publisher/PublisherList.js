@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { fetchPublishers } from "../../store/actions/thunks/dataActions.js";
 import { connect}  from "react-redux";
-import { bindActionCreators } from "redux";
 
 class Publisher extends React.Component {
     render() {
@@ -15,19 +13,28 @@ class Publisher extends React.Component {
 }
 
 export class LoadPublishers extends React.Component {
-    componentDidMount() {
-        this.props.loadPublishers()
+    constructor(props){
+        super(props)
+        this.state = { filtered_publishers: this.props.publishers }
+        this.searchPublisher = this.searchPublisher.bind(this)
+    }
+    searchPublisher(input) {
+        this.setState({
+            filtered_publishers : this.props.publishers.filter(publisher => {
+                return publisher.name.toLowerCase().includes(input.target.value.toLowerCase())
+            })
+        })
     }
     render(){
         return (
             <div className="content-container">
                 <input type="text" name="search" placeholder="Search publisher..." onChange={this.searchPublisher}/>
                 <div className="search-list">
-                { this.props.isFetching ? <p>Loading Publishers...</p>
-                    : this.props.publishers.map((publisher, i) =>  {
-                           return <Publisher key={i} {...publisher} ></Publisher> 
+                { 
+                    this.state.filtered_publishers.map((publisher, i) =>  {
+                            return <Publisher key={i} {...publisher} ></Publisher> 
                         })
-                    }
+                }
                 </div>
             </div>
         )
@@ -38,14 +45,7 @@ export class LoadPublishers extends React.Component {
 const mapStateToProps = (state) => {
     return {
         publishers : state.publisher.publishers,
-        isFetching : state.publisher.isFetching,
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadPublishers: bindActionCreators(fetchPublishers, dispatch),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoadPublishers)
+export default connect(mapStateToProps)(LoadPublishers)

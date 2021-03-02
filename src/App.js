@@ -22,10 +22,18 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
 import Register from './components/Register';
 
+import {fetchAuthors, fetchBooks, fetchCategories, fetchPublishers} from './store/actions/thunks/dataActions';
+
+// fetch the initial data from the server
+store.dispatch(fetchAuthors())
+store.dispatch(fetchBooks())
+store.dispatch(fetchCategories())
+store.dispatch(fetchPublishers())
+
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<p>Loading</p>} persistor={persistor}>
         <Router>
           <Navbar></Navbar>
           <ToastContainer position="bottom-right" />
